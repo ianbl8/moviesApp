@@ -15,6 +15,7 @@ import Grid from "@mui/material/Grid";
 import Avatar from "@mui/material/Avatar";
 import img from "../../images/film-poster-placeholder.png";
 import { MoviesContext } from "../../contexts/moviesContext";
+import { AvatarGroup } from "@mui/material";
 
 const styles = {
   card: { maxWidth: 345 },
@@ -44,7 +45,16 @@ export default function MovieCard({ movie, action }) {
       <CardHeader
         sx={styles.header}
         avatar={
-          movie.favourite ? (
+          movie.favourite && movie.mustWatch ? (
+            <AvatarGroup>
+              <Avatar sx={styles.avatar}>
+                <FavoriteIcon />
+              </Avatar>
+              <Avatar sx={styles.avatar}>
+                <PlaylistAddIcon />
+              </Avatar>
+            </AvatarGroup>
+        ) : movie.favourite ? (
             <Avatar sx={styles.avatar}>
               <FavoriteIcon />
             </Avatar>
