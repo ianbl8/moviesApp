@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Paper from "@mui/material/Paper";
@@ -8,7 +8,10 @@ import HomeIcon from "@mui/icons-material/Home";
 import Card from "@mui/material/Card";
 import Avatar from "@mui/material/Avatar";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import { CardHeader } from "@mui/material";
+import { MoviesContext } from "../../contexts/moviesContext";
+import { AvatarGroup } from "@mui/material";
 
 
 const styles = {
@@ -31,12 +34,18 @@ const styles = {
 const MovieHeader = (props) => {
   const movie = props.movie;
   
-  const favourites = JSON.parse(localStorage.getItem("favourites"));
-  let favourite = false;
-  for (const i in favourites) {
-    if (favourites[i].id == movie.id) {
-      favourite = true;
-    }
+  const { favourites, addToFavourites, mustWatch, addToMustWatch } = useContext(MoviesContext);
+
+  if (favourites.find((id) => id === movie.id)) {
+    movie.favourite = true;
+  } else {
+    movie.favourite = false
+  };
+
+  if (mustWatch.find((id) => id === movie.id)) {
+    movie.mustWatch = true;
+  } else {
+    movie.mustWatch = false
   };
 
   return (
@@ -47,12 +56,25 @@ const MovieHeader = (props) => {
 
       <Card sx={styles.card}>
         <CardHeader
-          avatar={
-            favourite ? (
+        avatar={
+          movie.favourite && movie.mustWatch ? (
+            <AvatarGroup>
               <Avatar sx={styles.avatar}>
                 <FavoriteIcon />
               </Avatar>
-            ) : null
+              <Avatar sx={styles.avatar}>
+                <PlaylistAddIcon />
+              </Avatar>
+            </AvatarGroup>
+        ) : movie.favourite ? (
+            <Avatar sx={styles.avatar}>
+              <FavoriteIcon />
+            </Avatar>
+          ) : movie.mustWatch ? (
+            <Avatar sx={styles.avatar}>
+              <PlaylistAddIcon />
+            </Avatar>
+          ) : null
           }
         />
       </Card>
