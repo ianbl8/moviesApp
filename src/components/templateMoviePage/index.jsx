@@ -1,11 +1,11 @@
-import React from "react";
-import { useQuery } from "react-query";
-import Spinner from "../spinner";
-import MovieHeader from "../headerMovie";
 import Grid from "@mui/material/Grid";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
+import React from "react";
+import { useQuery } from "react-query";
 import { getMovieImages } from "../../api/tmdb-api";
+import MovieHeader from "../headerMovie";
+import Spinner from "../spinner";
 
 const styles = {
   gridListRoot: {
@@ -19,7 +19,7 @@ const styles = {
   },
 };
 
-const TemplateMoviePage = ({ movie, children }) => {
+const MoviePageTemplate = ({ movie, children }) => {
   const { data , error, isLoading, isError } = useQuery(
     ["images", { id: movie.id }],
     getMovieImages
@@ -65,4 +65,4 @@ const TemplateMoviePage = ({ movie, children }) => {
   );
 };
 
-export default TemplateMoviePage;
+export default MoviePageTemplate;

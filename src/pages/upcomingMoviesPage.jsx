@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import PageTemplate from "../components/templateMovieListPage";
-import { getUpcomingMovies } from "../api/tmdb-api";
+import React from "react";
 import { useQuery } from "react-query";
+import { getUpcomingMovies } from "../api/tmdb-api";
+import AddToMustWatch from "../components/cardIcons/addToMustWatch";
 import Spinner from "../components/spinner";
-import AddToMustWatchIcon from "../components/cardIcons/addToMustWatch";
+import PageTemplate from "../components/templateMovieListPage";
 
 const UpcomingMoviesPage = (props) => {
   const { data, error, isLoading, isError } = useQuery("upcoming", getUpcomingMovies);
@@ -21,7 +21,7 @@ const UpcomingMoviesPage = (props) => {
 			title="Upcoming Movies"
 			movies={movies}
       action={(movie) => {
-        return <AddToMustWatchIcon movie={movie} />
+        return <AddToMustWatch movie={movie} />
       }}
 		/>
 	);

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import PageTemplate from "../components/templateMovieListPage";
-import { getMovies } from "../api/tmdb-api";
+import React from "react";
 import { useQuery } from "react-query";
+import { getMovies } from "../api/tmdb-api";
+import AddToFavourites from "../components/cardIcons/addToFavourites";
 import Spinner from "../components/spinner";
-import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
+import PageTemplate from "../components/templateMovieListPage";
 
 const HomePage = (props) => {
   const { data, error, isLoading, isError } = useQuery("discover", getMovies);
@@ -21,7 +21,7 @@ const HomePage = (props) => {
       title="Discover Movies"
       movies={movies}
       action={(movie) => {
-        return <AddToFavouritesIcon movie={movie} />
+        return <AddToFavourites movie={movie} />
       }}
     />
   );

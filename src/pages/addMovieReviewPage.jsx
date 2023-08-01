@@ -1,12 +1,12 @@
 import React from "react";
-import PageTemplate from "../components/templateMoviePage";
-import ReviewForm from "../components/reviewForm";
-import { useLocation } from "react-router-dom";
 import { useQuery } from "react-query";
+import { useLocation } from "react-router-dom";
 import { getMovie } from "../api/tmdb-api";
+import ReviewForm from "../components/reviewForm";
 import Spinner from "../components/spinner";
+import PageTemplate from "../components/templateMoviePage";
 
-const WriteReviewPage = (props) => {
+const AddMovieReviewPage = (props) => {
   const location = useLocation();
   const { movieId } = location.state;
   const { data: movie, error, isLoading, isError } = useQuery(
@@ -27,4 +27,4 @@ const WriteReviewPage = (props) => {
   );
 };
 
-export default WriteReviewPage;
+export default AddMovieReviewPage;

@@ -1,5 +1,5 @@
-import React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
+import React from 'react';
 
 const styles = {
   root: {
@@ -11,7 +11,7 @@ const styles = {
   },
 };
 
-export default function CircularIndeterminate() {
+export default function Spinner() {
 
   return (
     <div sx={styles.root}>

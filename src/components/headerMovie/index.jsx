@@ -1,18 +1,16 @@
-import React, { useContext } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import Paper from "@mui/material/Paper";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import HomeIcon from "@mui/icons-material/Home";
-import Card from "@mui/material/Card";
-import Avatar from "@mui/material/Avatar";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import HomeIcon from "@mui/icons-material/Home";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
-import { CardHeader } from "@mui/material";
+import { AvatarGroup, CardHeader } from "@mui/material";
+import Avatar from "@mui/material/Avatar";
+import Card from "@mui/material/Card";
+import IconButton from "@mui/material/IconButton";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import React, { useContext } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
-import { AvatarGroup } from "@mui/material";
-
 
 const styles = {
   root: {  

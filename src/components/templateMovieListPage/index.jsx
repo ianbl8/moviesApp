@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import Header from "../headerMovieList";
-import FilterCard from "../filterMoviesCard";
-import Grid from "@mui/material/Grid";
-import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
+import Fab from "@mui/material/Fab";
+import Grid from "@mui/material/Grid";
+import React, { useState } from "react";
+import FilterCard from "../filterMoviesCard";
+import MovieListHeader from "../headerMovieList";
 import MovieList from "../movieList";
 
 const styles = {
@@ -42,7 +42,7 @@ function MovieListPageTemplate({ movies, title, action }) {
    <>
       <Grid container sx={styles.root}>
         <Grid item xs={12}>
-          <Header title={title} />
+          <MovieListHeader title={title} />
         </Grid>
         <Grid item container spacing={5}>
           <MovieList
