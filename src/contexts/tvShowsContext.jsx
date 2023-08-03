@@ -3,49 +3,49 @@ import React, { useState } from "react";
 export const TVShowsContext = React.createContext(null);
 
 const TVShowsContextProvider = (props) => {
-  const [favourites, setFavourites] = useState([]);
+  const [favouriteTVShows, setFavouriteTVShows] = useState([]);
 
-  const [mustWatch, setMustWatch] = useState([]);
+  const [mustWatchTVShows, setMustWatchTVShows] = useState([]);
 
-  const [myReviews, setMyReviews] = useState( {} );
+  const [myReviewsTVShows, setMyReviewsTVShows] = useState( {} );
 
-  const addToFavourites = (tvShow) => {
-    let updatedFavourites = [...favourites];
-    if (!favourites.includes(tvShow.id)) {
-      updatedFavourites.push(tvShow.id);
+  const addToFavouriteTVShows = (tvShow) => {
+    let updatedFavouriteTVShows = [...favouriteTVShows];
+    if (!favouriteTVShows.includes(tvShow.id)) {
+      updatedFavouriteTVShows.push(tvShow.id);
     }
-    setFavourites(updatedFavourites);
+    setFavouriteTVShows(updatedFavouriteTVShows);
   };
 
-  const removeFromFavourites = (tvShow) => {
-    setFavourites(favourites.filter((tvId) => tvId !== tvShow.id));
+  const removeFromFavouriteTVShows = (tvShow) => {
+    setFavouriteTVShows(favouriteTVShows.filter((tvId) => tvId !== tvShow.id));
   };
 
-  const addToMustWatch = (tvShow) => {
-    let updatedMustWatch = [...mustWatch];
-    if (!mustWatch.includes(tvShow.id)) {
-      updatedMustWatch.push(tvShow.id);
+  const addToMustWatchTVShows = (tvShow) => {
+    let updatedMustWatchTVShows = [...mustWatchTVShows];
+    if (!mustWatchTVShows.includes(tvShow.id)) {
+      updatedMustWatchTVShows.push(tvShow.id);
     }
-    setMustWatch(updatedMustWatch);
+    setMustWatchTVShows(updatedMustWatchTVShows);
   };
 
-  const removeFromMustWatch = (tvShow) => {
-    setMustWatch(mustWatch.filter((tvId) => tvId !== tvShow.id));
+  const removeFromMustWatchTVShows = (tvShow) => {
+    setMustWatchTVShows(mustWatchTVShows.filter((tvId) => tvId !== tvShow.id));
   };
 
   const addReview = (tvShow, review) => {
-    setMyReviews( {...myReviews, [tvShow.id]: review } )
+    setMyReviewsTVShows( {...myReviewsTVShows, [tvShow.id]: review } )
   };
 
   return (
     <TVShowsContext.Provider
       value={{
-        favourites,
-        mustWatch,
-        addToFavourites,
-        removeFromFavourites,
-        addToMustWatch,
-        removeFromMustWatch,
+        favouriteTVShows,
+        mustWatchTVShows,
+        addToFavouriteTVShows,
+        removeFromFavouriteTVShows,
+        addToMustWatchTVShows,
+        removeFromMustWatchTVShows,
         addReview,
       }}
     >
