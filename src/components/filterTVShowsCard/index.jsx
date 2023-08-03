@@ -10,7 +10,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import React from "react";
 import { useQuery } from "react-query";
-import { getMovieGenres } from "../../api/tmdb-api";
+import { getTVShowGenres } from "../../api/tmdb-api";
 import Spinner from "../spinner";
 
 const styles = {
@@ -27,7 +27,7 @@ const styles = {
 };
 
 export default function FilterMoviesCard(props) {
-  const { data, error, isLoading, isError } = useQuery("movieGenres", getMovieGenres);
+  const { data, error, isLoading, isError } = useQuery("tvShowGenres", getTVShowGenres);
   if (isLoading) {
     return <Spinner />;
   };
@@ -93,7 +93,7 @@ export default function FilterMoviesCard(props) {
       <CardContent>
         <Typography variant="h5" component="h1">
           <SortIcon fontSize="large" />
-          Sort the movies.
+          Sort the TV shows.
         </Typography>
       </CardContent>
     </Card>

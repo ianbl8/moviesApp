@@ -5,11 +5,13 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import SiteHeader from "./components/siteHeader";
 import MoviesContextProvider from "./contexts/moviesContext";
+import TVShowsContextProvider from "./contexts/tvShowsContext";
 import AddMovieReviewPage from "./pages/addMovieReviewPage";
 import FavouriteMoviesPage from "./pages/favouriteMoviesPage";
 import HomePage from "./pages/homePage";
 import MovieDetailsPage from "./pages/movieDetailsPage";
 import MovieReviewPage from "./pages/movieReviewPage";
+import TVHomePage from "./pages/tvHomePage";
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 
 const queryClient = new QueryClient({
@@ -27,6 +29,11 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <SiteHeader />
+        <TVShowsContextProvider>
+          <Routes>
+            <Route path="/tvshows" element={<TVHomePage />} />
+          </Routes>
+        </TVShowsContextProvider>
         <MoviesContextProvider>
           <Routes>
             <Route path="/reviews/form" element={<AddMovieReviewPage/>} />

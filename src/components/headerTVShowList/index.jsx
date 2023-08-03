@@ -1,0 +1,41 @@
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import IconButton from "@mui/material/IconButton";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import React from "react";
+
+const styles = {
+  root: {
+    display: "flex",
+    justifyContent: "space-around",
+    alignItems: "center",
+    flexWrap: "wrap",
+    marginBottom: 1.5,
+  },
+};
+
+const TVShowListHeader = (props ) => {
+  const name = props.name
+
+  return (
+    <Paper component="div" sx={styles.root}>
+      <IconButton
+        aria-label="go back"
+      >
+        <ArrowBackIcon color="primary" fontSize="large" />
+      </IconButton>
+
+      <Typography variant="h4" component="h3">
+        {name}
+      </Typography>
+      <IconButton
+        aria-label="go forward"
+      >
+        <ArrowForwardIcon color="primary" fontSize="large" />
+      </IconButton>
+    </Paper>
+  );
+};
+
+export default TVShowListHeader;

@@ -27,10 +27,10 @@ const SiteHeader = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
   const menuOptions = [
-    { label: "Home", path: "/" },
+    { label: "Movies", path: "/" },
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Favourites", path: "/movies/favourites" },
-    { label: "Option 3", path: "/" },
+    { label: "TV Shows", path: "/tvshows" },
     { label: "Option 4", path: "/" },
   ];
 
