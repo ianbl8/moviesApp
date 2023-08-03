@@ -7,7 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getMovieReviews } from "../../api/tmdb-api";
+import { getTVShowReviews } from "../../api/tmdb-api";
 import { excerpt } from "../../util";
 
 const styles = {
@@ -16,11 +16,11 @@ const styles = {
   },
 };
 
-export default function MovieReviews({ movie }) {
+export default function TVShowReviews({ tvShow }) {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    getMovieReviews(movie.id).then((reviews) => {
+    getTVShowReviews(tvShow.id).then((reviews) => {
       setReviews(reviews);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -45,10 +45,10 @@ export default function MovieReviews({ movie }) {
               <TableCell >{excerpt(r.content)}</TableCell>
               <TableCell >
                 <Link
-                  to={`/reviews/movies/${r.id}`}
+                  to={`/reviews/tvshows/${r.id}`}
                   state={{
                       review: r,
-                      movie: movie,
+                      tvShow: tvShow,
                   }}
                 >
                   Full Review

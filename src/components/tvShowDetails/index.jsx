@@ -2,13 +2,15 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import MonetizationIcon from "@mui/icons-material/MonetizationOn";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import StarRate from "@mui/icons-material/StarRate";
+import VideocamIcon from '@mui/icons-material/Videocam';
+import VideocamOffIcon from '@mui/icons-material/VideocamOff';
 import Chip from "@mui/material/Chip";
 import Drawer from "@mui/material/Drawer";
 import Fab from "@mui/material/Fab";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
-// import TVShowReviews from "../tvShowReviews";
+import TVShowReviews from "../tvShowReviews";
 
 const styles = {  
   chipSet: {
@@ -54,16 +56,19 @@ const TVShowDetails = ( {tvShow} ) => {
         ))}
       </Paper>
       <Paper component="ul" sx={styles.chipSet}>
-        <Chip icon={<AccessTimeIcon />} label={`${tvShow.runtime} min.`} />
+        <Chip icon={<AccessTimeIcon />} label={`${tvShow.episode_run_time} min.`} />
         <Chip
-          icon={<MonetizationIcon />}
-          label={`${tvShow.revenue.toLocaleString()}`}
+          icon={<VideocamIcon />}
+          label={`${tvShow.first_air_date.toLocaleString()}`}
+        />
+        <Chip
+          icon={<VideocamOffIcon />}
+          label={`${tvShow.last_air_date.toLocaleString()}`}
         />
         <Chip
           icon={<StarRate />}
           label={`${tvShow.vote_average} (${tvShow.vote_count}`}
         />
-        <Chip label={`Released: ${tvShow.release_date}`} />
       </Paper>
       <Paper component="ul" sx={styles.chipSet}>
         <li>
