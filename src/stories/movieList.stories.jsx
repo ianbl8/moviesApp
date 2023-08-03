@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Grid";
 import React from "react";
 import { MemoryRouter } from "react-router";
-import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
+import AddToFavouriteMovies from "../components/cardIcons/addToFavouriteMovies";
 import MovieList from "../components/movieList";
 import MoviesContextProvider from "../contexts/moviesContext";
 import SampleMovie from "./sampleMovie";
@@ -27,7 +27,7 @@ export const Basic = () => {
     <Grid container spacing={5}>
       <MovieList
         movies={movies}
-        action={(movie) => <AddToFavouritesIcon movie={movie} />}
+        action={(movie) => <AddToFavouriteMovies movie={movie} />}
       />
     </Grid>
   );

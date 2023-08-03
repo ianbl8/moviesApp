@@ -1,6 +1,6 @@
 import React from "react";
 import { MemoryRouter } from "react-router";
-import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
+import AddToFavouriteMovies from "../components/cardIcons/addToFavouriteMovies";
 import MovieCard from "../components/movieCard";
 import MoviesContextProvider from "../contexts/moviesContext";
 import SampleMovie from "./sampleMovie";
@@ -18,7 +18,7 @@ export const Basic = () => {
   return (
     <MovieCard
       movie={SampleMovie}
-      action={(movie) => <AddToFavouritesIcon movie={movie} />}
+      action={(movie) => <AddToFavouriteMovies movie={movie} />}
       taging={(movie) => null}
     />
   );
@@ -30,7 +30,7 @@ export const Exceptional = () => {
   return (
     <MovieCard
       movie={sampleNoPoster}
-      action={(movie) => <AddToFavouritesIcon movie={movie} />}
+      action={(movie) => <AddToFavouriteMovies movie={movie} />}
       taging={(movie) => null}
     />
   );
