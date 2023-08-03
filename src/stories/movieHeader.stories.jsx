@@ -1,6 +1,7 @@
 import React from "react";
 import { MemoryRouter } from "react-router";
 import MovieHeader from "../components/headerMovie";
+import MoviesContextProvider from "../contexts/moviesContext";
 import SampleMovie from "./sampleData";
 
 export default {
@@ -8,6 +9,7 @@ export default {
   component: MovieHeader,
   decorators: [
     (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
+    (Story) => <MoviesContextProvider>{Story()}</MoviesContextProvider>,
   ],
 };
 
