@@ -4,7 +4,7 @@ import { MemoryRouter } from "react-router";
 import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
 import MovieList from "../components/movieList";
 import MoviesContextProvider from "../contexts/moviesContext";
-import SampleMovie from "./sampleData";
+import SampleMovie from "./sampleMovie";
 
 export default {
   title: "Home Page/MovieList",

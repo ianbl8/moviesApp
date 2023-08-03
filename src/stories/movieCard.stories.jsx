@@ -3,7 +3,7 @@ import { MemoryRouter } from "react-router";
 import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
 import MovieCard from "../components/movieCard";
 import MoviesContextProvider from "../contexts/moviesContext";
-import SampleMovie from "./sampleData";
+import SampleMovie from "./sampleMovie";
 
 export default {
   title: "Home Page/MovieCard",
