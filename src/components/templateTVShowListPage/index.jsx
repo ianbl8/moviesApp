@@ -18,7 +18,7 @@ const styles = {
   },
 };
 
-function TVShowListPageTemplate({ tvShows, name, action }) {
+function TVShowListPageTemplate({ tvShows, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -42,7 +42,7 @@ function TVShowListPageTemplate({ tvShows, name, action }) {
    <>
       <Grid container sx={styles.root}>
         <Grid item xs={12}>
-          <TVShowListHeader name={name} />
+          <TVShowListHeader title={title} />
         </Grid>
         <Grid item container spacing={5}>
           <TVShowList

@@ -15,8 +15,8 @@ const styles = {
   },
 };
 
-const TVShowListHeader = (props ) => {
-  const name = props.name
+const TVShowListHeader = (props) => {
+  const title = props.title
 
   return (
     <Paper component="div" sx={styles.root}>
@@ -27,7 +27,7 @@ const TVShowListHeader = (props ) => {
       </IconButton>
 
       <Typography variant="h4" component="h3">
-        {name}
+        {title}
       </Typography>
       <IconButton
         aria-label="go forward"

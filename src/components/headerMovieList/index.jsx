@@ -15,7 +15,7 @@ const styles = {
   },
 };
 
-const MovieListHeader = (props ) => {
+const MovieListHeader = (props) => {
   const title = props.title
 
   return (
