@@ -1,11 +1,11 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { getMovies } from "../api/tmdb-api";
-import AddToFavouriteMovies from "../components/cardIcons/addToFavourites";
+import AddToFavouriteMovies from "../components/cardIcons/addToFavouriteMovies";
 import Spinner from "../components/spinner";
 import PageTemplate from "../components/templateMovieListPage";
 
-const HomePage = (props) => {
+const MoviesHomePage = (props) => {
   const { data, error, isLoading, isError } = useQuery("discoverMovies", getMovies);
   if (isLoading) {
     return <Spinner />;
@@ -27,4 +27,4 @@ const HomePage = (props) => {
   );
 };
 
-export default HomePage;
+export default MoviesHomePage;

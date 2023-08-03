@@ -2,7 +2,7 @@ import RateReviewIcon from "@mui/icons-material/RateReview";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const WriteReview = ({ tvSHow }) => {
+const WriteTVShowReview = ({ tvSHow }) => {
   return (
     <Link
       to={'/reviews/form'}
@@ -15,4 +15,4 @@ const WriteReview = ({ tvSHow }) => {
   );
 };
 
-export default WriteReview;
+export default WriteTVShowReview;

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { useQueries } from "react-query";
 import { getMovie } from "../api/tmdb-api";
-import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
-import WriteReview from "../components/cardIcons/writeReview";
+import RemoveFromFavouriteMovies from "../components/cardIcons/removeFromFavouriteMovies";
+import WriteMovieReview from "../components/cardIcons/writeMovieReview";
 import Spinner from "../components/spinner";
 import PageTemplate from "../components/templateMovieListPage";
 import { MoviesContext } from "../contexts/moviesContext";
@@ -35,8 +35,8 @@ const FavouriteMoviesPage = (props) => {
       action={(movie) => {
         return (
           <>
-            <RemoveFromFavourites movie={movie} />
-            <WriteReview movie={movie} />
+            <RemoveFromFavouriteMovies movie={movie} />
+            <WriteMovieReview movie={movie} />
           </>
         );
       }}
