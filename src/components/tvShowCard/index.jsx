@@ -1,7 +1,7 @@
-import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import StarRateIcon from "@mui/icons-material/StarRate";
+import VideocamIcon from '@mui/icons-material/Videocam';
 import { AvatarGroup } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -82,8 +82,8 @@ export default function TVShowCard({ tvShow, action }) {
         <Grid container>
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
-              <CalendarIcon fontSize="small" />
-              {tvShow.release_date}
+              <VideocamIcon fontSize="small" />
+              {tvShow.first_air_date}
             </Typography>
           </Grid>
           <Grid item xs={6}>

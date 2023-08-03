@@ -1,5 +1,4 @@
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import MonetizationIcon from "@mui/icons-material/MonetizationOn";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import StarRate from "@mui/icons-material/StarRate";
 import VideocamIcon from '@mui/icons-material/Videocam';
