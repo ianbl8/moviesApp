@@ -1,8 +1,8 @@
-import React from "react";
-import FilterMoviesCard from "../components/filterMoviesCard";
-import { MemoryRouter } from "react-router";
 import { action } from "@storybook/addon-actions";
-import { QueryClientProvider, QueryClient } from "react-query";
+import React from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { MemoryRouter } from "react-router";
+import FilterMoviesCard from "../components/filterMoviesCard";
 
 const queryClient = new QueryClient({
   defaultOptions: {

@@ -1,10 +1,9 @@
 import React from "react";
-import MovieCard from "../components/movieCard";
-import SampleMovie from "./sampleData";
 import { MemoryRouter } from "react-router";
-import MoviesContextProvider from "../contexts/moviesContext";
-import { action } from "@storybook/addon-actions";
 import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
+import MovieCard from "../components/movieCard";
+import MoviesContextProvider from "../contexts/moviesContext";
+import SampleMovie from "./sampleData";
 
 export default {
   title: "Home Page/MovieCard",
