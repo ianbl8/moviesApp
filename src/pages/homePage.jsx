@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { getMovies } from "../api/tmdb-api";
-import AddToFavourites from "../components/cardIcons/addToFavourites";
+import AddToFavouriteMovies from "../components/cardIcons/addToFavourites";
 import Spinner from "../components/spinner";
 import PageTemplate from "../components/templateMovieListPage";
 
@@ -21,7 +21,7 @@ const HomePage = (props) => {
       title="Discover Movies"
       movies={movies}
       action={(movie) => {
-        return <AddToFavourites movie={movie} />
+        return <AddToFavouriteMovies movie={movie} />
       }}
     />
   );

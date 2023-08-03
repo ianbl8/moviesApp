@@ -3,12 +3,12 @@ import IconButton from "@mui/material/IconButton";
 import React, { useContext } from "react";
 import { TVShowsContext } from "../../contexts/tvShowsContext";
 
-const RemoveFromFavourites = ({ tvShow }) => {
+const RemoveFromFavouriteTVShows = ({ tvShow }) => {
   const context = useContext(TVShowsContext);
 
   const onUserRequest = (e) => {
     e.preventDefault();
-    context.removeFromFavourites(tvShow);
+    context.removeFromFavouriteTVShows(tvShow);
   };
 
 return (
@@ -21,4 +21,4 @@ return (
   );
 };
 
-export default RemoveFromFavourites;
+export default RemoveFromFavouriteTVShows;

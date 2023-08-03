@@ -26,15 +26,15 @@ const styles = {
 };
 
 export default function TVShowCard({ tvShow, action }) {
-  const { favourites, addToFavourites, mustWatch, addToMustWatch } = useContext(TVShowsContext);
+  const { favouriteTVShows, addToFavouriteTVShows, mustWatchTVShows, addToMustWatchTVShows } = useContext(TVShowsContext);
 
-  if (favourites.find((id) => id === tvShow.id)) {
+  if (favouriteTVShows.find((id) => id === tvShow.id)) {
     tvShow.favourite = true;
   } else {
     tvShow.favourite = false
   };
 
-  if (mustWatch.find((id) => id === tvShow.id)) {
+  if (mustWatchTVShows.find((id) => id === tvShow.id)) {
     tvShow.mustWatch = true;
   } else {
     tvShow.mustWatch = false

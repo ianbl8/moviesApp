@@ -8,7 +8,7 @@ import PageTemplate from "../components/templateMovieListPage";
 import { MoviesContext } from "../contexts/moviesContext";
 
 const FavouriteMoviesPage = (props) => {
-	const { favourites: movieIds } = useContext(MoviesContext);
+	const { favouriteMovies: movieIds } = useContext(MoviesContext);
 
   // Create an array of queries and run them in parallel.
   const favouriteMovieQueries = useQueries(

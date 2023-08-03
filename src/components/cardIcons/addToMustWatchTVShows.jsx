@@ -3,12 +3,12 @@ import IconButton from "@mui/material/IconButton";
 import React, { useContext } from "react";
 import { TVShowsContext } from "../../contexts/tvShowsContext";
 
-const AddToMustWatch = ({ tvShow }) => {
+const AddToMustWatchTVShows = ({ tvShow }) => {
   const context = useContext(TVShowsContext);
 
   const onUserSelect = (e) => {
     e.preventDefault();
-    context.addToMustWatch(tvShow);
+    context.addToMustWatchTVShows(tvShow);
   };
   return (
     <IconButton aria-label="add to favorites" onClick={onUserSelect}>
@@ -17,4 +17,4 @@ const AddToMustWatch = ({ tvShow }) => {
   );
 };
 
-export default AddToMustWatch;
+export default AddToMustWatchTVShows;

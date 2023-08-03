@@ -3,12 +3,12 @@ import IconButton from "@mui/material/IconButton";
 import React, { useContext } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
 
-const RemoveFromFavourites = ({ movie }) => {
+const RemoveFromFavouriteMovies = ({ movie }) => {
   const context = useContext(MoviesContext);
 
   const onUserRequest = (e) => {
     e.preventDefault();
-    context.removeFromFavourites(movie);
+    context.removeFromFavouriteMovies(movie);
   };
 
 return (
@@ -21,4 +21,4 @@ return (
   );
 };
 
-export default RemoveFromFavourites;
+export default RemoveFromFavouriteMovies;

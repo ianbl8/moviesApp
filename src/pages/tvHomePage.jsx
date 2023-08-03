@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { getTVShows } from "../api/tmdb-api";
-import AddToFavourites from "../components/cardIcons/addToFavouriteTVShows";
+import AddToFavouriteTVShows from "../components/cardIcons/addToFavouriteTVShows";
 import Spinner from "../components/spinner";
 import PageTemplate from "../components/templateTVShowListPage";
 
@@ -21,7 +21,7 @@ const TVHomePage = (props) => {
       title="Discover TV Shows"
       tvShows={tvShows}
       action={(tvShow) => {
-        return <AddToFavourites tvShow={tvShow} />
+        return <AddToFavouriteTVShows tvShow={tvShow} />
       }}
     />
   );
