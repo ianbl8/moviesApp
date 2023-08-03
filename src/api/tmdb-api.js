@@ -1,8 +1,6 @@
 export const getGenres = () => {
   return fetch(
-    "https://api.themoviedb.org/3/genre/movie/list?api_key=" +
-      import.meta.env.VITE_TMDB_KEY +
-      "&language=en-US"
+    `https://api.themoviedb.org/3/genre/movie/list?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US`
     ).then((response) => {
       if (!response.ok) {
         throw new Error(response.json().message);
@@ -15,7 +13,6 @@ export const getGenres = () => {
 };
 
 export const getMovie = (args) => {
-  // console.log(args);
   const [, idPart] = args.queryKey;
   const { id } = idPart;
   return fetch(
