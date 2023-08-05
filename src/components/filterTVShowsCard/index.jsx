@@ -26,7 +26,7 @@ const styles = {
   },
 };
 
-export default function FilterMoviesCard(props) {
+export default function FilterTVShowsCard(props) {
   const { data, error, isLoading, isError } = useQuery("tvShowGenres", getTVShowGenres);
   if (isLoading) {
     return <Spinner />;
