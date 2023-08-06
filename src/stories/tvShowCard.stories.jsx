@@ -6,7 +6,7 @@ import TVShowContextProvider from "../contexts/tvShowsContext";
 import SampleTVShow from "./sampleTVShow";
 
 export default {
-  title: "Home Page/TVShowCard",
+  title: "TV Home Page/TVShowCard",
   component: TVShowCard,
   decorators: [
     (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
