@@ -21,7 +21,7 @@ const styles = {
 
 const TVShowPageTemplate = ({ tvShow, children }) => {
   const { data , error, isLoading, isError } = useQuery(
-    ["images", { id: tvShow.id }],
+    ["tvShowImages", { id: tvShow.id }],
     getTVShowImages
   );
   if (isLoading) {

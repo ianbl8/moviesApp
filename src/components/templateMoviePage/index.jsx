@@ -21,7 +21,7 @@ const styles = {
 
 const MoviePageTemplate = ({ movie, children }) => {
   const { data , error, isLoading, isError } = useQuery(
-    ["images", { id: movie.id }],
+    ["movieImages", { id: movie.id }],
     getMovieImages
   );
   if (isLoading) {
