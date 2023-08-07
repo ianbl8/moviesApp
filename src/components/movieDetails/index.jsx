@@ -6,9 +6,17 @@ import Chip from "@mui/material/Chip";
 import Drawer from "@mui/material/Drawer";
 import Fab from "@mui/material/Fab";
 import Paper from "@mui/material/Paper";
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableRow from '@mui/material/TableRow';
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
+import { useQuery } from "react-query";
+import { getMovieCredits } from "../../api/tmdb-api";
 import MovieReviews from "../movieReviews";
+import Spinner from "../spinner";
 
 const styles = {  
   chipSet: {
@@ -32,6 +40,20 @@ const styles = {
 
 const MovieDetails = ( {movie} ) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const { data , error, isLoading, isError } = useQuery(
+    ["movieCredits", { id: movie.id }],
+    getMovieCredits
+  );
+  if (isLoading) {
+    return <Spinner />;
+  };
+  if (isError) {
+    return <h1>{error.message}</h1>;
+  };
+
+  const cast = data.cast;
+  const crew = data.crew;
 
   return (
     <>
@@ -75,6 +97,51 @@ const MovieDetails = ( {movie} ) => {
           </li>
         ))}
       </Paper>
+
+      <br />
+      <Typography variant="h5" component="h3">
+        Cast
+      </Typography>
+      <TableContainer component={Paper}>
+      <Table aria-label="simple table">
+        <TableBody>
+          {cast.map((actor) => (
+            <TableRow
+              key={actor.name}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {actor.name}
+              </TableCell>
+              <TableCell>{actor.character}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+    
+    <br />
+      <Typography variant="h5" component="h3">
+        Crew
+      </Typography>
+      <TableContainer component={Paper}>
+      <Table aria-label="simple table">
+        <TableBody>
+          {crew.map((member) => (
+            <TableRow
+              key={member.name}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {member.name}
+              </TableCell>
+              <TableCell>{member.job}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+    
       <Fab    
         color="secondary"
         variant="extended"
