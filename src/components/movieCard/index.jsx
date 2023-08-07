@@ -66,7 +66,14 @@ export default function MovieCard({ movie, action }) {
         }
         title={
           <Typography variant="h5" component="p">
-            {movie.title}{" "}
+            <Link 
+              to={`/movies/${movie.id}`}
+              state={{
+                movie: movie,
+              }}
+            >
+              {movie.title}
+            </Link>{" "}
           </Typography>
         }
       />

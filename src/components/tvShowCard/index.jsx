@@ -66,7 +66,14 @@ export default function TVShowCard({ tvShow, action }) {
         }
         title={
           <Typography variant="h5" component="p">
-            {tvShow.name}{" "}
+            <Link 
+              to={`/tvshows/${tvShow.id}`}
+              state={{
+                tvShow: tvShow,
+              }}
+            >
+              {tvShow.name}
+            </Link>{" "}
           </Typography>
         }
       />
