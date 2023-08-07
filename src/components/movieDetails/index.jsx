@@ -14,6 +14,7 @@ import TableRow from '@mui/material/TableRow';
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 import { getMovieCredits } from "../../api/tmdb-api";
 import MovieReviews from "../movieReviews";
 import Spinner from "../spinner";
@@ -53,6 +54,7 @@ const MovieDetails = ( {movie} ) => {
   };
 
   const cast = data.cast;
+  console.log(cast);
   const crew = data.crew;
 
   return (
@@ -111,7 +113,14 @@ const MovieDetails = ( {movie} ) => {
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
+                <Link 
+                  to={`/person/${actor.id}`}
+                  state={{
+                    person: actor,
+                  }}
+                >
                 {actor.name}
+                </Link>
               </TableCell>
               <TableCell>{actor.character}</TableCell>
             </TableRow>

@@ -13,7 +13,9 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Typography from "@mui/material/Typography";
-import React, { useState } from "react";import { useQuery } from "react-query";
+import React, { useState } from "react";
+import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 import { getTVShowCredits } from "../../api/tmdb-api";
 import Spinner from "../spinner";
 import TVShowReviews from "../tvShowReviews";
@@ -114,14 +116,14 @@ const TVShowDetails = ( {tvShow} ) => {
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
+              <Link to={`/person/${actor.id}`} >
                 {actor.name}
+              </Link>
               </TableCell>
               <TableCell>
                 <ul>
-                {actor.roles.map((role) => (
-                  <li>{role.character}</li>
-                ))}
-                  </ul>
+                  {actor.roles.map((role) => (<li>{role.character}</li>))}
+                </ul>
                 </TableCell>
             </TableRow>
           ))}
