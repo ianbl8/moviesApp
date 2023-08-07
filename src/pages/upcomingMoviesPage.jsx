@@ -6,7 +6,7 @@ import Spinner from "../components/spinner";
 import PageTemplate from "../components/templateMovieListPage";
 
 const UpcomingMoviesPage = (props) => {
-  const { data, error, isLoading, isError } = useQuery("upcoming", getUpcomingMovies);
+  const { data, error, isLoading, isError } = useQuery("upcomingMovies", getUpcomingMovies);
   if (isLoading) {
     return <Spinner />;
   };
