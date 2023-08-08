@@ -28,7 +28,6 @@ const NewMovieForm = ({ movie }) => {
     genres: [],
     release_date: "",
     runtime: "",
-    production_companies: [],
   };
 
   const {
@@ -39,6 +38,7 @@ const NewMovieForm = ({ movie }) => {
   } = useForm(defaultValues);
   const navigate = useNavigate();
   const context = useContext(MoviesContext);
+  const [genre, setGenre] = useState( {} );
   const [open, setOpen] = useState(false);
 
   const { data, error, isLoading, isError } = useQuery("movieGenres", getMovieGenres);
@@ -54,19 +54,21 @@ const NewMovieForm = ({ movie }) => {
     movieGenres.unshift({ id: "0", name: "All" });
   };
 
-  const handleGenresChange = (event, index, values) => {
-    this.setState({
-      values: [...values]
-    });
+  const handleGenreChange = (event) => {
+    setGenre(event.target.value);
+    console.log(genre);
   };
 
   const handleSnackClose = (event) => {
     setOpen(false);
-    navigate("/movies/favourites");
+    navigate("/movies");
   };
 
   const onSubmit = (movie) => {
     movie.id = uuidv4();
+    movie.genres = [ {id: genre, name: movieGenres.find(x => x.id == genre).name} ];
+    delete movie.genre;
+    movie.release_date = movie.release_date.toISOString().slice(0,10);
     context.addMovie(movie);
     setOpen(true);
   };
@@ -123,7 +125,7 @@ const NewMovieForm = ({ movie }) => {
           name="overview"
           control={control}
           rules={{
-            required: "Give an overview of the film.",
+            required: "Overview is required",
             minLength: { value: 10, message: "Overview is too short" },
           }}
           defaultValue=""
@@ -150,20 +152,16 @@ const NewMovieForm = ({ movie }) => {
 
         <Controller
           control={control}
-          name="genres"
-          rules={{
-            required: "Select at least one genre",
-          }}
+          name="genre"
           render={({ field: { onChange, value } }) => (
             <TextField
-              id="select-genres"
+              id="select-genre"
               select
-              multiple
               variant="outlined"
-              label="Genres"
-              value={value}
-              onChange={handleGenresChange}
-              helperText="Select one or more genres"
+              label="Genre"
+              value={genre}
+              onChange={handleGenreChange}
+              helperText="Select a genre"
             >
               {movieGenres.map((option) => (
                 <MenuItem key={option.id} value={option.id}>
@@ -173,17 +171,12 @@ const NewMovieForm = ({ movie }) => {
             </TextField>
           )}
         />
-        {errors.genres && (
-          <Typography variant="h6" component="p">
-            {errors.genres.message}
-          </Typography>
-        )}
 
         <Controller
           name="release_date"
           control={control}
           rules={{
-            required: "Select the movie's release date",
+            required: "Release date is required",
           }}
           defaultValue=""
           render={({ field: { onChange, value } }) => (
@@ -210,7 +203,7 @@ const NewMovieForm = ({ movie }) => {
           name="runtime"
           control={control}
           rules={{
-            required: "Select the movie's runtime in minutes",
+            required: "Runtime is required",
           }}
           defaultValue=""
           render={({ field: { onChange, value } }) => (
