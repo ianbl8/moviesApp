@@ -25,7 +25,6 @@ const MoviesHomePage = (props) => {
         return (
         <>
           <AddToFavouriteMovies movie={movie} />
-          <AddNewMovie />
         </>
         )
       }}
