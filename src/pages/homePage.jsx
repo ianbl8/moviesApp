@@ -1,12 +1,20 @@
-import React from "react";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
-import { getMovies } from "../api/tmdb-api";
+import { getMovies, getMoviesByPage } from "../api/tmdb-api";
 import AddToFavouriteMovies from "../components/cardIcons/addToFavouriteMovies";
 import Spinner from "../components/spinner";
 import PageTemplate from "../components/templateMovieListPage";
 
 const MoviesHomePage = (props) => {
-  const { data, error, isLoading, isError } = useQuery("discoverMovies", getMovies);
+
+  const [page, setPage] = useState(1);
+  const handlePageChange = (event, value) => { 
+    setPage(value);
+  }; 
+
+  const { data, error, isLoading, isError } = useQuery(["discoverMovies", page], () => getMoviesByPage(page));
   if (isLoading) {
     return <Spinner />;
   };
@@ -17,17 +25,22 @@ const MoviesHomePage = (props) => {
   const movies = data ? data.results : [];
 
   return (
-    <PageTemplate
-      title="Discover Movies"
-      movies={movies}
-      action={(movie) => {
-        return (
-        <>
-          <AddToFavouriteMovies movie={movie} />
-        </>
-        )
-      }}
-    />
+    <>
+      <PageTemplate
+        title="Discover Movies"
+        movies={movies}
+        action={(movie) => {
+          return (
+          <>
+            <AddToFavouriteMovies movie={movie} />
+          </>
+          )
+        }}
+      />
+      <Stack spacing={2}>
+        <Pagination size="large" color="primary" count={200} page={page} onChange={handlePageChange}/>
+      </Stack>
+    </>
   );
 };
 
