@@ -8,7 +8,9 @@ import MoviesContextProvider from "./contexts/moviesContext";
 import TVShowsContextProvider from "./contexts/tvShowsContext";
 import AddMovieReviewPage from "./pages/addMovieReviewPage";
 import AddNewMoviePage from "./pages/addNewMoviePage";
+import AddTVShowReviewPage from "./pages/addTVShowReviewPage";
 import FavouriteMoviesPage from "./pages/favouriteMoviesPage";
+import FavouriteTVShowsPage from "./pages/favouriteTVShowsPage";
 import HomePage from "./pages/homePage";
 import MovieDetailsPage from "./pages/movieDetailsPage";
 import MovieReviewPage from "./pages/movieReviewPage";
@@ -37,12 +39,14 @@ const App = () => {
             <TVShowsContextProvider>
               <Routes>
                 <Route path="/reviews/movies/form" element={<AddMovieReviewPage/>} />
-                <Route path="/reviews/tvshows/:id" element={<TVShowReviewPage />} />
+                <Route path="/reviews/tvshows/form" element={<AddTVShowReviewPage/>} />
                 <Route path="/reviews/movies/:id" element={<MovieReviewPage />} />
+                <Route path="/reviews/tvshows/:id" element={<TVShowReviewPage />} />
                 <Route path="/movies/favourites" element={<FavouriteMoviesPage />} />
                 <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
                 <Route path="/movies/new" element={<AddNewMoviePage />} />
                 <Route path="/movies/:id" element={<MovieDetailsPage />} />
+                <Route path="/tvshows/favourites" element={<FavouriteTVShowsPage />} />
                 <Route path="/tvshows/:id" element={<TVShowDetailsPage />} />
                 <Route path="/tvshows" element={<TVHomePage />} />
                 <Route path="/person/:id" element={<PersonDetailsPage />} />

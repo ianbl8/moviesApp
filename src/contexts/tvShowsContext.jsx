@@ -7,7 +7,7 @@ const TVShowsContextProvider = (props) => {
 
   const [mustWatchTVShows, setMustWatchTVShows] = useState([]);
 
-  const [myReviewsTVShows, setMyReviewsTVShows] = useState( {} );
+  const [myTVShowReviews, setMyTVShowReviews] = useState( {} );
 
   const addToFavouriteTVShows = (tvShow) => {
     let updatedFavouriteTVShows = [...favouriteTVShows];
@@ -34,7 +34,7 @@ const TVShowsContextProvider = (props) => {
   };
 
   const addReview = (tvShow, review) => {
-    setMyReviewsTVShows( {...myReviewsTVShows, [tvShow.id]: review } )
+    setMyTVShowReviews( {...myTVShowReviews, [tvShow.id]: review } )
   };
 
   return (
@@ -42,6 +42,7 @@ const TVShowsContextProvider = (props) => {
       value={{
         favouriteTVShows,
         mustWatchTVShows,
+        myTVShowReviews,
         addToFavouriteTVShows,
         removeFromFavouriteTVShows,
         addToMustWatchTVShows,

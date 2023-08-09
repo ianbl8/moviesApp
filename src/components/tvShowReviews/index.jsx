@@ -1,3 +1,4 @@
+import StarIcon from '@mui/icons-material/Star';
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -5,9 +6,10 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getTVShowReviews } from "../../api/tmdb-api";
+import { TVShowsContext } from "../../contexts/tvShowsContext";
 import { excerpt } from "../../util";
 
 const styles = {
@@ -17,18 +19,30 @@ const styles = {
 };
 
 export default function TVShowReviews({ tvShow }) {
-  const [reviews, setReviews] = useState([]);
+  const [tvShowReviews, setTVShowReviews] = useState([]);
 
   useEffect(() => {
-    getTVShowReviews(tvShow.id).then((reviews) => {
-      setReviews(reviews);
+    getTVShowReviews(tvShow.id).then((tvShowReviews) => {
+      setTVShowReviews(tvShowReviews);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const tvId = tvShow.id;
+  const { myTVShowReviews } = useContext(TVShowsContext);
+  const myReview = myTVShowReviews[tvId];
+
+  const renderStars = () => {
+    let stars = [];
+    for(let i = 0; i < myReview.rating; i++) {
+      stars.push(<StarIcon />);
+    };
+    return stars;
+  };
+
   return (
     <TableContainer component={Paper}>
-      <Table sx={styles.table} aria-label="reviews table">
+      <Table sx={styles.table} aria-label="tvShowReviews table">
         <TableHead>
           <TableRow>
             <TableCell >Author</TableCell>
@@ -37,7 +51,18 @@ export default function TVShowReviews({ tvShow }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {reviews.map((r) => (
+        {myReview ?
+            <TableRow key={myReview.author}>
+              <TableCell component="th" scope="row">
+                {myReview.author}
+              </TableCell>
+              <TableCell>{myReview.review}</TableCell>
+              <TableCell width="120">
+                {renderStars()}
+              </TableCell>
+            </TableRow>
+          : null}
+          {tvShowReviews.map((r) => (
             <TableRow key={r.id}>
               <TableCell component="th" scope="row">
                 {r.author}
@@ -45,7 +70,7 @@ export default function TVShowReviews({ tvShow }) {
               <TableCell >{excerpt(r.content)}</TableCell>
               <TableCell >
                 <Link
-                  to={`/reviews/tvshows/${r.id}`}
+                  to={`/tvShowReviews/tvshows/${r.id}`}
                   state={{
                       review: r,
                       tvShow: tvShow,

@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 import { getMovieReviews } from "../../api/tmdb-api";
 import { MoviesContext } from "../../contexts/moviesContext";
 import { excerpt } from "../../util";
-import { StartSharp } from '@mui/icons-material';
 
 const styles = {
   table: {
@@ -20,11 +19,11 @@ const styles = {
 };
 
 export default function MovieReviews({ movie }) {
-  const [reviews, setReviews] = useState([]);
+  const [movieReviews, setMovieReviews] = useState([]);
 
   useEffect(() => {
-    getMovieReviews(movie.id).then((reviews) => {
-      setReviews(reviews);
+    getMovieReviews(movie.id).then((movieReviews) => {
+      setMovieReviews(movieReviews);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -43,7 +42,7 @@ export default function MovieReviews({ movie }) {
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={styles.table} aria-label="reviews table">
+      <Table sx={styles.table} aria-label="movieReviews table">
         <TableHead>
           <TableRow>
             <TableCell>Author</TableCell>
@@ -63,7 +62,7 @@ export default function MovieReviews({ movie }) {
               </TableCell>
             </TableRow>
           : null}
-          {reviews.map((r) => (
+          {movieReviews.map((r) => (
             <TableRow key={r.id}>
               <TableCell component="th" scope="row">
                 {r.author}
@@ -71,7 +70,7 @@ export default function MovieReviews({ movie }) {
               <TableCell>{excerpt(r.content)}</TableCell>
               <TableCell align="center">
                 <Link
-                  to={`/reviews/movies/${r.id}`}
+                  to={`/movieReviews/movies/${r.id}`}
                   state={{
                       review: r,
                       movie: movie,

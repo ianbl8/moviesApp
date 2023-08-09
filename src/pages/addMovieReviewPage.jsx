@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import { useLocation } from "react-router-dom";
 import { getMovie } from "../api/tmdb-api";
-import ReviewForm from "../components/reviewForm";
+import MovieReviewForm from "../components/movieReviewForm";
 import Spinner from "../components/spinner";
 import PageTemplate from "../components/templateMoviePage";
 
@@ -22,7 +22,7 @@ const AddMovieReviewPage = (props) => {
 
   return (
     <PageTemplate movie={movie}>
-      <ReviewForm movie={movie} />
+      <MovieReviewForm movie={movie} />
     </PageTemplate>
   );
 };

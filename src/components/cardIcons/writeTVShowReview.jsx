@@ -2,10 +2,10 @@ import RateReviewIcon from "@mui/icons-material/RateReview";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const WriteTVShowReview = ({ tvSHow }) => {
+const WriteTVShowReview = ({ tvShow }) => {
   return (
     <Link
-      to={'/reviews/form'}
+      to={'/reviews/tvshows/form'}
       state={{
         tvShowId: tvShow.id,
       }}

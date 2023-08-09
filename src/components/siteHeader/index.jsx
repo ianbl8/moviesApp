@@ -28,10 +28,10 @@ const SiteHeader = () => {
 
   const menuOptions = [
     { label: "Movies", path: "/" },
-    { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "Favourites", path: "/movies/favourites" },
+    { label: "Upcoming Movies", path: "/movies/upcoming" },
+    { label: "Favourite Movies", path: "/movies/favourites" },
     { label: "TV Shows", path: "/tvshows" },
-    { label: "Option 4", path: "/" },
+    { label: "Favourite TV Shows", path: "/tvshows/favourites" },
   ];
 
   const handleMenuSelect = (pageURL) => {
