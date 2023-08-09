@@ -2,7 +2,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import React, { useState } from "react";
 import { useQuery } from "react-query";
-import { getMovies, getMoviesByPage } from "../api/tmdb-api";
+import { getMovies } from "../api/tmdb-api";
 import AddToFavouriteMovies from "../components/cardIcons/addToFavouriteMovies";
 import Spinner from "../components/spinner";
 import PageTemplate from "../components/templateMovieListPage";
@@ -14,7 +14,7 @@ const MoviesHomePage = (props) => {
     setPage(value);
   }; 
 
-  const { data, error, isLoading, isError } = useQuery(["discoverMovies", page], () => getMoviesByPage(page));
+  const { data, error, isLoading, isError } = useQuery(["discoverMovies", page], () => getMovies(page));
   if (isLoading) {
     return <Spinner />;
   };
