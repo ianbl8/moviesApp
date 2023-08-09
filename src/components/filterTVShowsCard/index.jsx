@@ -46,7 +46,7 @@ export default function FilterTVShowsCard(props) {
   };
 
   const handleTextChange = (e) => {
-    handleUserInput(e, "title", e.target.value);
+    handleUserInput(e, "name", e.target.value);
   };
 
   const handleGenreChange = (e) => {
@@ -66,7 +66,7 @@ export default function FilterTVShowsCard(props) {
           id="filled-search"
           label="Search field"
           type="search"
-          value={props.titleFilter}
+          value={props.nameFilter}
           variant="filled"
           onChange={handleTextChange}
         />
